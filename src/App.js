@@ -4,6 +4,7 @@ import Home from './Home';
 import AppNavbar from './Navbar';
 import Movies from './Movies';
 import Search from './Search';
+import Register from './Register';
 
 function App() {
 
@@ -23,6 +24,10 @@ function App() {
 
                             <Route exact path="/search">
                                 <Search />
+                            </Route>
+
+                            <Route exact path="/register">
+                                <Register />
                             </Route>
 
                             <Route path="/movies/:title">

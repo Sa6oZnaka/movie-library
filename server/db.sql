@@ -1,10 +1,11 @@
+DROP DATABASE IF EXISTS `movielib`;
 CREATE DATABASE `movielib`;
 use `movielib`;
 
 CREATE TABLE `users` (
   `id` int PRIMARY KEY auto_increment,
-  `name` char(25) not null,
-  `password` char(30) not null
+  `username` char(25) not null,
+  `password` char(69) not null
 );
 
 CREATE TABLE `favorites` (
