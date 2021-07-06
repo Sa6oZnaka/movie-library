@@ -4,7 +4,7 @@ use `movielib`;
 
 CREATE TABLE `users` (
   `id` int PRIMARY KEY auto_increment,
-  `username` char(25) not null,
+  `username` char(25) UNIQUE not null,
   `password` char(69) not null
 );
 
@@ -18,7 +18,7 @@ CREATE TABLE `favorites` (
 CREATE TABLE `ratings` (
   `userId` int not null,
   `movieId` int not null,
-  `raing` int not null,
+  `rating` int not null,
   
   FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
 );

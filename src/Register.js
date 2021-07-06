@@ -47,6 +47,27 @@ const Register = () => {
         })
     }
 
+    const userFavorites = () => {
+        Axios.get("http://localhost:3001/favorites", {
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            }
+        }).then((response) => {
+            console.log(response);
+        })
+    }
+
+    /*const ratings = () => {
+        Axios.get("http://localhost:3001/ratings", {
+            movieId: "6",
+            headers: {
+                "x-access-token": localStorage.getItem("token")
+            }
+        }).then((response) => {
+            console.log(response);
+        })
+    }*/
+
     return (
         <div className="App">
             <div className="registration">
@@ -78,7 +99,10 @@ const Register = () => {
             <h1>{loginStatus}</h1>
 
             {loginStatus && (
-                <button onClick={userAuthencticated}> CLICK ME!! </button>
+                <div>
+                    <button onClick={userAuthencticated}> CLICK ME!! </button>
+                    <button onClick={userFavorites}> Favorites!! </button>
+                </div>
             )}
 
 

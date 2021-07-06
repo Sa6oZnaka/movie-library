@@ -78,8 +78,31 @@ const verifyJWT = (req, res, next) => {
 
 app.get('/isUserAuth', verifyJWT , (req, res) => {
     res.send("Authenicated!");
-
 })
+
+app.get('/favorites', verifyJWT , (req, res) => {    
+    const userId = req.userId;
+    
+    db.query("SELECT movieId from users u LEFT JOIN favorites f ON (u.id = ? AND f.userId = ?);", [userId, userId], (err, result) => {
+        if(err){
+            console.log(err);
+        }
+        res.send(result);
+    });
+});
+
+/*app.get('/ratings', verifyJWT , (req, res) => {    
+    
+    const movieID = req.body.movieId;
+    //console.log(movieID);
+    //console.log(req.body);
+    console.log(req.body);
+    console.log(req);
+    console.log(movieID);
+
+    //db.query("SELECT AVG(rating) FROM ratings where movieId = ?;", movieID, (err, result) => {
+    //});
+})*/
 
 app.get("/login", (req, res) => {
     if(req.session.user){
@@ -93,8 +116,6 @@ app.post("/login", (req, res) => {
 
     const username = req.body.username;
     const password = req.body.password;
-
-    console.log("PASTED LOGIN -> " + username);
 
     db.query(
         "SELECT * FROM users WHERE username = ?;",
