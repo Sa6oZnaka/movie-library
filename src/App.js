@@ -5,44 +5,35 @@ import AppNavbar from './Navbar';
 import Movies from './Movies';
 
 function App() {
-  return (
 
-    <div className="App">
-        <AppNavbar/>
-        <Router>
-            <header className="App-header">
-                
-                <p>
-                Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                Learn React
-                </a>
+    return (
 
-                
-                <div className="content">
-                    <Switch>
-                        <Route exact path="/">
-                            <Home />
-                        </Route>
+        <div className="App">
+            
+            <Router>
+                <AppNavbar/>
+                <header className="App-header">
+                    <div className="content">
+                        <Switch>
 
-                        <Route path="/movies/:title">
-                            <Movies />
-                        </Route>
+                            <Route exact path="/">
+                                <Home />
+                            </Route>
 
+                            <Route path="/movies/:title">
+                                <Movies />
+                            </Route>
 
-                    </Switch>
-                </div>
+                        </Switch>
 
-                
-            </header>
-      </Router>
-    </div>
+                        <div>
+                            
+                        </div>
+                    </div>
+
+                </header>
+        </Router>
+        </div>
   );
 }
 
