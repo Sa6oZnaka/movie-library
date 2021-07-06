@@ -1,12 +1,13 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './Home';
-import Navbar from './Navbar';
+import AppNavbar from './Navbar';
 
 function App() {
   return (
 
     <div className="App">
+        <AppNavbar/>
         <Router>
             <header className="App-header">
                 
@@ -22,7 +23,7 @@ function App() {
                 Learn React
                 </a>
 
-                <Navbar/>
+                
                 <div className="content">
                     <Switch>
                         <Route path="/">
