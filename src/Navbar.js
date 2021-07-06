@@ -13,7 +13,6 @@ const AppNavbar = () => {
     }
 
     function submit(){
-        console.warn(data);
         history.push("/movies/" + data);
     }
 

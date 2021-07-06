@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './Home';
 import AppNavbar from './Navbar';
 import Movies from './Movies';
+import Search from './Search';
 
 function App() {
 
@@ -18,6 +19,10 @@ function App() {
 
                             <Route exact path="/">
                                 <Home />
+                            </Route>
+
+                            <Route exact path="/search">
+                                <Search />
                             </Route>
 
                             <Route path="/movies/:title">
