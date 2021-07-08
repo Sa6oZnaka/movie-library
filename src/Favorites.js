@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-
+import { Row, Container, Col, Image } from "react-bootstrap";
 import Axios from "axios";
+import { Grid, Paper} from "@material-ui/core";
 
 const Favorites = () => {
 
@@ -23,20 +24,14 @@ const Favorites = () => {
             
             let moviesData = [];
             if(movies.length > 0){
-                //let done = 0;
+
                 for(let i = 0; i < movies.length; i ++){
-                    // if null is stored in db
-                    //if(movies[i].movieId != null){
-                        Axios.get(ApiUrl + movies[i].movieId).then((response) => {
-                            moviesData.push(response);
-                            //done ++;
-                            if(moviesData.length === movies.length){
-                                setUserData(moviesData);
-                            }
-                        })
-                    //}else{
-                    //    done++;
-                    //}
+                    Axios.get(ApiUrl + movies[i].movieId).then((response) => {
+                        moviesData.push(response);
+                        if(moviesData.length === movies.length){
+                            setUserData(moviesData);
+                        }
+                    })
                 }
             }
         })
@@ -50,34 +45,28 @@ const Favorites = () => {
             <h2>Favorite</h2>
     
           </header>
-    
-          <div className="user-container">
-            <h5 className="info-item">{userData.name}</h5>
-            <h5 className="info-item">{userData.premiered}</h5>
-          </div>
 
-          <table>
-            <thead>
-                <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Movie ID</th>
-                </tr>
-            </thead>
-            <tbody>
+
+          <Grid container spacing={3}>
+          
+              
                 { (userData.length > 0) ? userData.map( (droplet, index) => {
                 return (
-                    <tr key={ index }>
-                    <td>{ index }</td>
-                    <td>{ droplet.data.name }</td>
-                    <td>{ droplet.data.id }</td>
-                    </tr>
+                    
+                    <Grid item xs={2}>
+                        <Paper>
+                        <Image src={droplet.data.image.medium} rounded />
+                        <p>{ droplet.data.name }</p>
+                        </Paper>
+                    </Grid>
+                    
                 )
                 }) : <tr><td colSpan="5">Your favorite list is empty</td></tr> }
-            </tbody>
-            </table>
+            
+          
+            </Grid>
+
         </div>
-       
       );
 }
 

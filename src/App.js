@@ -14,34 +14,26 @@ function App() {
             
             <Router>
                 <AppNavbar/>
-                <header className="App-header">
-                    <div className="content">
-                        <Switch>
+                
+                <Switch>
 
-                            <Route exact path="/">
-                                <Home />
-                            </Route>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
 
-                            <Route exact path="/search">
-                                <Search />
-                            </Route>
+                    <Route exact path="/search">
+                        <Search />
+                    </Route>
 
-                            <Route exact path="/register">
-                                <Register />
-                            </Route>
+                    <Route exact path="/register">
+                        <Register />
+                    </Route>
 
-                            <Route path="/movies/:title">
-                                <Movies />
-                            </Route>
+                    <Route path="/movies/:title">
+                        <Movies />
+                    </Route>
 
-                        </Switch>
-
-                        <div>
-                            
-                        </div>
-                    </div>
-
-                </header>
+                </Switch>
         </Router>
         </div>
   );
