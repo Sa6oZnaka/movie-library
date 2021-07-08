@@ -110,7 +110,7 @@ module.exports = function (app, db) {
                             
                             const id = result[0].id;
                             const token = jwt.sign({id}, "jwtSecret", {
-                                expiresIn: 300,
+                                expiresIn: 30000,
                             })
     
                             req.session.user = result;

@@ -33,7 +33,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            express: 60 * 60 * 24 * 10000,
+            express: 60 * 60 * 24 * 1000,
         }
     })
 );

@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import Axios from "axios";
 import { Grid, Paper} from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 const Favorites = () => {
 
     const ApiUrl = "http://api.tvmaze.com/shows/";
     const [userData, setUserData] = useState({});
+    let history = useHistory();
 
     useEffect(() => {
         getUserFavorites();
@@ -36,7 +38,11 @@ const Favorites = () => {
             }
         })
     }
-    
+
+    const clicked = (data) => {
+        history.push("/movie/" + data.id);
+    }
+
     return (
     
         <div className="Favorite">
@@ -54,7 +60,7 @@ const Favorites = () => {
                 return (
                     
                     <Grid item xs={2}>
-                        <Paper>
+                        <Paper onClick={e => clicked(droplet.data)}>
                         <Image src={droplet.data.image.medium} rounded />
                         <p>{ droplet.data.name }</p>
                         </Paper>

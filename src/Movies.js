@@ -31,11 +31,10 @@ const Movies = () => {
         <Grid container spacing={3}>
                  
             { (movies.length > 0) ? movies.map( (movie) => {
-            
             return (
                 <Grid item xs={12}>
                     <Paper>
-                        <MovieCard movie = {movie}/>
+                        <MovieCard movie = {movie.show}/>
                     </Paper>
                 </Grid>
                 )

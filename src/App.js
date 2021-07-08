@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './Home';
 import AppNavbar from './Navbar';
 import Movies from './Movies';
-import Search from './Search';
 import Register from './Register';
+import Movie from './Movie';
 
 function App() {
 
@@ -21,16 +21,16 @@ function App() {
                         <Home />
                     </Route>
 
-                    <Route exact path="/search">
-                        <Search />
-                    </Route>
-
                     <Route exact path="/register">
                         <Register />
                     </Route>
 
                     <Route path="/movies/:title">
                         <Movies />
+                    </Route>
+
+                    <Route path="/movie/:title">
+                        <Movie/>
                     </Route>
 
                 </Switch>
