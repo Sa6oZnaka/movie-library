@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {useParams} from 'react-router-dom';
 import Axios from "axios";
 import { Grid, Paper} from "@material-ui/core";
-import { Image } from "react-bootstrap";
+import { Image , Button} from "react-bootstrap";
 // API
 // http://api.tvmaze.com/search/shows?q=tets
 
@@ -22,6 +22,19 @@ const Movies = () => {
             const movies = response.data;
             console.log(movies);
             setMoviesData(movies);
+        })
+    }
+
+    const AddToFavorite = (movieId) => {
+        console.log("Open movie page for ID: " + movieId);
+
+        Axios.get("http://localhost:3001/addFavorite", {
+            headers: {
+                "x-access-token": localStorage.getItem("token"),
+                movieId
+            }
+        }).then((response) => {
+            console.log(response);
         })
     }
 
@@ -48,8 +61,9 @@ const Movies = () => {
                     <Paper>
                         <Image src={movieImage.medium} rounded />
                         <p>{ droplet.show.name }</p>
-                        </Paper>
-                    </Grid>
+                        <Button onClick={(e) => AddToFavorite(droplet.show.id)}>Add to favorite</Button>
+                    </Paper>
+                </Grid>
                 )
                 }) : <tr><td colSpan="5">Your favorite list is empty</td></tr> }
         

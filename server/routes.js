@@ -40,6 +40,28 @@ module.exports = function (app, db) {
         });
     });
     
+    app.get('/addFavorite', verifyJWT , (req, res) => {  
+        const userId = req.userId;
+        const movieId = req.headers.movieid;
+        db.query("INSERT INTO favorites (userId, movieId) VALUES (?, ?);", [userId, movieId], (err, result) => {
+            if(err){
+                console.log(err);
+            }
+            res.send(result);
+        });
+    });
+
+    app.get('/removeFavorite', verifyJWT , (req, res) => {  
+        const userId = req.userId;
+        const movieId = req.headers.movieid;
+        db.query("DELETE FROM favorites WHERE userId = ? AND movieId = ?;", [userId, movieId], (err, result) => {
+            if(err){
+                console.log(err);
+            }
+            res.send(result);
+        });
+    });
+
     app.get('/ratings', verifyJWT , (req, res) => {    
         let movieID = req.headers.movieid;
         db.query("SELECT AVG(rating) FROM ratings where movieId = ?;", movieID, (err, result) => {
