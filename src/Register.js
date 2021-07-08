@@ -47,7 +47,7 @@ const Register = () => {
         })
     }
 
-    const userFavorites = () => {
+    const getUserFavorites = () => {
         Axios.get("http://localhost:3001/favorites", {
             headers: {
                 "x-access-token": localStorage.getItem("token")
@@ -57,16 +57,27 @@ const Register = () => {
         })
     }
 
-    /*const ratings = () => {
+    const getRatings = () => {
         Axios.get("http://localhost:3001/ratings", {
-            movieId: "6",
             headers: {
-                "x-access-token": localStorage.getItem("token")
+                "x-access-token": localStorage.getItem("token"),
+                movieId: 6,
             }
         }).then((response) => {
             console.log(response);
         })
-    }*/
+    }
+
+    const getNotes = () => {
+        Axios.get("http://localhost:3001/notes", {
+            headers: {
+                "x-access-token": localStorage.getItem("token"),
+                movieId: 6,
+            }
+        }).then((response) => {
+            console.log(response);
+        })
+    }
 
     return (
         <div className="App">
@@ -101,7 +112,9 @@ const Register = () => {
             {loginStatus && (
                 <div>
                     <button onClick={userAuthencticated}> CLICK ME!! </button>
-                    <button onClick={userFavorites}> Favorites!! </button>
+                    <button onClick={getUserFavorites}> Favorites!! </button>
+                    <button onClick={getRatings}> Ratings!! </button>
+                    <button onClick={getNotes}> Notes!! </button>
                 </div>
             )}
 

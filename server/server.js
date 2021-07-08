@@ -91,18 +91,25 @@ app.get('/favorites', verifyJWT , (req, res) => {
     });
 });
 
-/*app.get('/ratings', verifyJWT , (req, res) => {    
-    
-    const movieID = req.body.movieId;
-    //console.log(movieID);
-    //console.log(req.body);
-    console.log(req.body);
-    console.log(req);
-    console.log(movieID);
+app.get('/ratings', verifyJWT , (req, res) => {    
+    let movieID = req.headers.movieid;
+    db.query("SELECT AVG(rating) FROM ratings where movieId = ?;", movieID, (err, result) => {
+        if(err){
+            console.log(err);
+        }
+        res.send(result[0]);
+    });
+})
 
-    //db.query("SELECT AVG(rating) FROM ratings where movieId = ?;", movieID, (err, result) => {
-    //});
-})*/
+app.get('/notes', verifyJWT , (req, res) => {    
+    let movieID = req.headers.movieid;
+    db.query("SELECT * FROM notes where movieId = ?;", movieID, (err, result) => {
+        if(err){
+            console.log(err);
+        }
+        res.send(result);
+    });
+})
 
 app.get("/login", (req, res) => {
     if(req.session.user){
