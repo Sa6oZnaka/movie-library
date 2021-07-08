@@ -83,7 +83,7 @@ app.get('/isUserAuth', verifyJWT , (req, res) => {
 app.get('/favorites', verifyJWT , (req, res) => {    
     const userId = req.userId;
     
-    db.query("SELECT movieId from users u LEFT JOIN favorites f ON (u.id = ? AND f.userId = ?);", [userId, userId], (err, result) => {
+    db.query("SELECT movieId from users u LEFT JOIN favorites f ON (u.id = ? AND f.userId = ?) WHERE movieId IS NOT NULL;", [userId, userId], (err, result) => {
         if(err){
             console.log(err);
         }
