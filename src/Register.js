@@ -80,9 +80,9 @@ const Register = () => {
     }
 
     return (
-        <div className="App">
+        <div className="Movies">
             <div className="registration">
-                <h1> Registration </h1>
+                <h2> Register </h2>
                 <label>Username</label>
                 <input type="text" onChange = {(e) => {
                     setUsernameReg(e.target.value);
@@ -95,7 +95,7 @@ const Register = () => {
             </div>
 
             <div className="login">
-                <h1> Login </h1>
+                <h2> Login </h2>
                 <label>Username</label>
                 <input type="text" onChange = {(e) => {
                     setUsername(e.target.value);
@@ -111,10 +111,7 @@ const Register = () => {
 
             {loginStatus && (
                 <div>
-                    <button onClick={userAuthencticated}> CLICK ME!! </button>
-                    <button onClick={getUserFavorites}> Favorites!! </button>
-                    <button onClick={getRatings}> Ratings!! </button>
-                    <button onClick={getNotes}> Notes!! </button>
+                    <h1>You are now logged in!</h1>
                 </div>
             )}
 

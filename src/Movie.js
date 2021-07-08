@@ -38,6 +38,15 @@ const Movie = () => {
 
     const changeRating = (rating) => {
         console.log(rating);
+        Axios.get("http://localhost:3001/addRating", {
+            headers: {
+                "x-access-token": localStorage.getItem("token"),
+                movieId: title,
+                rating: rating
+            }
+        }).then((response) => {
+            console.log(response);
+        })
     }
 
     return (

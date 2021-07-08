@@ -71,6 +71,22 @@ module.exports = function (app, db) {
             res.send(result[0]);
         });
     })
+
+    app.get('/addRating', verifyJWT , (req, res) => {    
+        const userId = req.userId;
+        const movieID = req.headers.movieid;
+        const rating = req.headers.rating;
+
+        // TODO add primery key to ratings and use:
+        //INSERT INTO ratings ((userId, movieId, rating) VALUES (?,?,?) ON DUPLICATE KEY UPDATE rating = ?;
+        db.query("INSERT INTO ratings (userId, movieId, rating) VALUES (?, ?, ?)", 
+        [userId, movieID, rating], (err, result) => {
+            if(err){
+                console.log(err);
+            }
+            res.send(result[0]);
+        });
+    })
     
     app.get('/notes', verifyJWT , (req, res) => {    
         let movieID = req.headers.movieid;
