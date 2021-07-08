@@ -64,7 +64,7 @@ module.exports = function (app, db) {
 
     app.get('/ratings', verifyJWT , (req, res) => {    
         let movieID = req.headers.movieid;
-        db.query("SELECT AVG(rating) FROM ratings where movieId = ?;", movieID, (err, result) => {
+        db.query("SELECT AVG(rating) as rating FROM ratings where movieId = ?;", movieID, (err, result) => {
             if(err){
                 console.log(err);
             }
