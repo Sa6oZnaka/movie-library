@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Row, Container, Col, Image } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import Axios from "axios";
 import { Grid, Paper} from "@material-ui/core";
 
@@ -61,7 +61,10 @@ const Favorites = () => {
                     </Grid>
                     
                 )
-                }) : <tr><td colSpan="5">Your favorite list is empty</td></tr> }
+                }) : <div className="No-movies">
+                        <h1>Your favorite list is empty</h1>
+                    </div> 
+                    }
             
           
             </Grid>
