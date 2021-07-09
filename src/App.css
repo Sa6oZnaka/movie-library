@@ -25,6 +25,10 @@
   margin-bottom: 20px;
 }
 
+.form-movie {
+  padding: 100px;
+}
+
 .No-movies {
   position: fixed;
   top: 50%;

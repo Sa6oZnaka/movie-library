@@ -4,8 +4,6 @@ import notFound from "./notFound.jpg"
 
 const MovieCard = (data) => {
 
-    console.warn(data);
-
     const addToFavorite = (movieId) => {
         Axios.get("http://localhost:3001/addFavorite", {
             headers: {

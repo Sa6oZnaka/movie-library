@@ -51,6 +51,18 @@ module.exports = function (app, db) {
         });
     });
 
+    app.get('/addComment', verifyJWT , (req, res) => {  
+        const userId = req.userId;
+        const movieId = req.headers.movieid;
+        const comment = req.headers.comment;
+        db.query("INSERT into notes (userId, movieId, note) VALUES (?, ?, ?);", [userId, movieId, comment], (err, result) => {
+            if(err){
+                console.log(err);
+            }
+            res.send(result);
+        });
+    });
+
     app.get('/removeFavorite', verifyJWT , (req, res) => {  
         const userId = req.userId;
         const movieId = req.headers.movieid;

@@ -36,49 +36,7 @@ const Register = () => {
             }
         });
     };
-
-    const userAuthencticated = () => {
-        Axios.get("http://localhost:3001/isUserAuth", {
-            headers: {
-                "x-access-token": localStorage.getItem("token")
-            }
-        }).then((response) => {
-            console.log(response);
-        })
-    }
-
-    const getUserFavorites = () => {
-        Axios.get("http://localhost:3001/favorites", {
-            headers: {
-                "x-access-token": localStorage.getItem("token")
-            }
-        }).then((response) => {
-            console.log(response);
-        })
-    }
-
-    const getRatings = () => {
-        Axios.get("http://localhost:3001/ratings", {
-            headers: {
-                "x-access-token": localStorage.getItem("token"),
-                movieId: 6,
-            }
-        }).then((response) => {
-            console.log(response);
-        })
-    }
-
-    const getNotes = () => {
-        Axios.get("http://localhost:3001/notes", {
-            headers: {
-                "x-access-token": localStorage.getItem("token"),
-                movieId: 6,
-            }
-        }).then((response) => {
-            console.log(response);
-        })
-    }
-
+    
     return (
         <div className="Movies">
             <div className="registration">
