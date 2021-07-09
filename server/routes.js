@@ -54,6 +54,17 @@ module.exports = function (app, db) {
     app.get('/removeFavorite', verifyJWT , (req, res) => {  
         const userId = req.userId;
         const movieId = req.headers.movieid;
+        db.query("DELETE From favorites WHERE userId = ? AND movieId = ?;", [userId, movieId], (err, result) => {
+            if(err){
+                console.log(err);
+            }
+            res.send(result);
+        });
+    });
+
+    app.get('/removeFavorite', verifyJWT , (req, res) => {  
+        const userId = req.userId;
+        const movieId = req.headers.movieid;
         db.query("DELETE FROM favorites WHERE userId = ? AND movieId = ?;", [userId, movieId], (err, result) => {
             if(err){
                 console.log(err);

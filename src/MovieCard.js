@@ -6,7 +6,7 @@ const MovieCard = (data) => {
 
     console.warn(data);
 
-    const AddToFavorite = (movieId) => {
+    const addToFavorite = (movieId) => {
         Axios.get("http://localhost:3001/addFavorite", {
             headers: {
                 "x-access-token": localStorage.getItem("token"),
@@ -17,6 +17,17 @@ const MovieCard = (data) => {
         })
     }
 
+    const removeFavorite = (movieId) => {
+        Axios.get("http://localhost:3001/removeFavorite", {
+            headers: {
+                "x-access-token": localStorage.getItem("token"),
+                movieId
+            }
+        }).then((response) => {
+            console.log(response);
+        })
+    }
+    
     let movieImage = data.movie.image;
     if(movieImage == undefined)
         movieImage = {
@@ -30,7 +41,8 @@ const MovieCard = (data) => {
         
         <Image src={movieImage.medium} rounded />
         <p>{ data.movie.name }</p>
-        <Button onClick={(e) => AddToFavorite(data.movie.id)}>Add to favorite</Button>
+        <Button onClick={(e) => addToFavorite(data.movie.id)}>Add to favorite</Button>
+        <Button variant="danger" onClick={(e) => removeFavorite(data.movie.id) }>Remove favorite</Button>
         
         </div>
     );
